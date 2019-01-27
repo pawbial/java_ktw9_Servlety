@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -27,9 +28,12 @@ public class LoginServlet extends HttpServlet {
 
             return;
         } else {
-            request.setAttribute("welcomeUser","Hello " + userName);
+            HttpSession session = request.getSession();
+            session.setAttribute("welcomeUser","Hello " + userName);
 
-            request.getRequestDispatcher("/main").forward(request,response);
+//            request.getRequestDispatcher("/main").forward(request,response);
+
+            response.sendRedirect("main");
         }
 
     }
