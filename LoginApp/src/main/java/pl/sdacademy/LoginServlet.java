@@ -27,7 +27,9 @@ public class LoginServlet extends HttpServlet {
 
             return;
         } else {
-            response.getWriter().println("Valid user");
+            request.setAttribute("welcomeUser","Hello " + userName);
+
+            request.getRequestDispatcher("/main").forward(request,response);
         }
 
     }
