@@ -22,10 +22,8 @@ public class LoginValidator {
         if (userName.isEmpty() || password.isEmpty()) {
             return false;
         }
-        if (userName.equals("JavaKTW9") && password.equals("SDA2019")) {
-            return true;
-        }
-       return false;
+        return userName.equals("JavaKTW9") && password.equals("SDA2019");
+
     }
 
 }
