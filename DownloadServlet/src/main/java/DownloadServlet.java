@@ -1,3 +1,4 @@
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletContext;
@@ -63,6 +64,8 @@ public class DownloadServlet extends HttpServlet {
         response.setHeader("Content-Disposition","attachment; filename=\""+ fileName + "\"");
 
         ServletOutputStream outputStream = response.getOutputStream();
+
+//        IOUtils.copy(inputStream,outputStream);  Metoda z biblioteki commons-io, zastępuje całe pobieranie z tej sekcji. c
 
         byte [] buffer = new byte[8 * 1024];
         int bytesRead;
