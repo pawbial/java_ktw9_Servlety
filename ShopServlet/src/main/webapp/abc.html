@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket</title>
+</head>
+<body>
+
+<h2>Pick product: </h2>
+<form action="products" method="post">
+    <select name="article">
+        <option value="" disabled selection>Select ...</option>
+        <option value="1">product 1</option>
+        <option value="2">product 2</option>
+        <option value="3">product 3</option>
+    </select>
+    <h2>Set quantity</h2>
+    <select action="quantity" method="post">
+        <input type="number" min="1" name="quantity">
+
+    </select>
+    <input type="submit" name="add" value="add">
+</form>
+</body>
+</html>
+
