@@ -1,7 +1,17 @@
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
-@WebServlet
+@WebServlet (name = "BasketServlett", value = "/basket")
 public class BasketServlet extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().println("<h1>DUPA</h1>");
+        response.getWriter().println(ArticleControllerServlet.basket);
+    }
 }

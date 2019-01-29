@@ -7,7 +7,7 @@
 <body>
 
 <h2>Pick product: </h2>
-<form action="products" method="post">
+<form action="basket" method="post">
     <select name="article">
         <option value="" disabled selection>Select ...</option>
         <option value="1">product 1</option>
@@ -20,6 +20,8 @@
 
     </select>
     <input type="submit" name="add" value="add">
+    <br>
+    <input type="submit" name="basket" formmethod="get">
 </form>
 </body>
 </html>

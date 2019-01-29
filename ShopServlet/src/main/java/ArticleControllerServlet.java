@@ -17,6 +17,8 @@ public class ArticleControllerServlet extends HttpServlet {
 
     private Map<Integer, String> products = new HashMap<>();
 
+    public static Map<String, Integer> basket = new HashMap<>();
+
     public ArticleControllerServlet() {
         products.put(1, "Piwo");
         products.put(2, "Kielba");
@@ -48,7 +50,6 @@ public class ArticleControllerServlet extends HttpServlet {
                 "    </select>\n" +
                 "    <input type=\"submit\" name=\"add\">\n" +
                 "</form>\n" +
-                "<a href=\"/basket\">Go to shoping cart</a>" +
                 "</body>\n" +
                 "</html>");
     }
@@ -56,11 +57,22 @@ public class ArticleControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String article = request.getParameter("article");
+        Integer article = Integer.valueOf(request.getParameter("article"));
         Integer quantity = Integer.valueOf(request.getParameter("quantity"));
 
-        response.getWriter().println(article + quantity);
+        for (Map.Entry<Integer, String> entry : products.entrySet()) {
+            if (entry.getKey() == article) {
+                if (basket.get(entry.getValue()) == null) {
+                    basket.put(entry.getValue(), quantity);
+                } else {
+                    basket.compute(entry.getValue(), (key, val) -> val + quantity);
 
+                }
+            }
+
+
+        }
+        response.getWriter().println(basket);
 
     }
 }
