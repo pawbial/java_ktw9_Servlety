@@ -18,7 +18,7 @@ public class ArticleControllerServlet extends HttpServlet {
 
     private Map<Integer, String> products = new HashMap<>();
 
-    public static Map<String, Integer> basket = new HashMap<>();
+    Map<String, Integer> basket;
 
     public ArticleControllerServlet() {
         products.put(1, "Piwo");
@@ -58,6 +58,17 @@ public class ArticleControllerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            session = request.getSession();
+            basket = new HashMap<>();
+        } else {
+            Object object = session.getAttribute("basket");
+            basket = (Map<String, Integer>) object;
+        }
+
         Integer article = Integer.valueOf(request.getParameter("article"));
         Integer quantity = Integer.valueOf(request.getParameter("quantity"));
 
@@ -67,16 +78,9 @@ public class ArticleControllerServlet extends HttpServlet {
                     basket.put(entry.getValue(), quantity);
                 } else {
                     basket.compute(entry.getValue(), (key, val) -> val + quantity);
-
                 }
             }
-
-
         }
-        HttpSession session = request.getSession();
-        session.setAttribute("basket",basket);
-
-        response.sendRedirect("basket");
-
+        session.setAttribute("basket", basket);
     }
 }
