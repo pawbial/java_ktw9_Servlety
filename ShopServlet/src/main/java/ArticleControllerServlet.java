@@ -17,7 +17,6 @@ public class ArticleControllerServlet extends HttpServlet {
 
 
     private Map<Integer, String> products = new HashMap<>();
-
     Map<String, Integer> basket;
 
     public ArticleControllerServlet() {
@@ -39,7 +38,7 @@ public class ArticleControllerServlet extends HttpServlet {
                 "<body>\n" +
                 "\n" +
                 "<h2>Pick product: </h2>\n" +
-                "<form action=\"products\" method=\"post\">\n" +
+                "<form action=\"products\" method=\"post\" value=\"add product\">\n" +
                 "    <select name=\"article\">\n" +
                 "        <option value=\"\" disabled selection>Select ...</option>\n" +
                 products.entrySet().stream().map(entry -> "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>").collect(Collectors.joining()) +
@@ -49,7 +48,10 @@ public class ArticleControllerServlet extends HttpServlet {
                 "        <input type=\"number\" min=\"1\" name=\"quantity\">\n" +
                 "\n" +
                 "    </select>\n" +
-                "    <input type=\"submit\" name=\"add\">\n" +
+                "    <input type=\"submit\" name=\"add\" <br>>\n" +
+                "</form>\n" +
+                "<form action=\"basket\" method=\"get\" value=\"Go to cart\">" +
+                " \"<input type=\"submit\"action=\"/basket\" method=\"get\"value=\"Go to cart\" >\" " +
                 "</form>\n" +
                 "</body>\n" +
                 "</html>");
@@ -82,5 +84,7 @@ public class ArticleControllerServlet extends HttpServlet {
             }
         }
         session.setAttribute("basket", basket);
+
+        response.sendRedirect("/shop");
     }
 }
