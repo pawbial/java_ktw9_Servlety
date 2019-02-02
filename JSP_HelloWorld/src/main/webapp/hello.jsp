@@ -1,4 +1,5 @@
-<%@ page import="java.time.LocalDateTime" %><%--
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="pl.sdacademy.Counter" %><%--
   Created by IntelliJ IDEA.
   User: Użytkownik
   Date: 2019-02-02
@@ -10,7 +11,11 @@
 <head>
     <title>HelloWorld</title>
 </head>
+<%--<%! int counter = 0;%> //deklaracja pola w klasie--%>
 <body>
+<%--poniżej skryptlet--%>
     <p>Dzisiaj jest: <%= LocalDateTime.now().toString()%></p>
+<%--poniżej wyrażenie--%>
+    <% out.print("Licznik odwiedzin: " + Counter.INSTANCE.getCounter());%>
 </body>
 </html>
