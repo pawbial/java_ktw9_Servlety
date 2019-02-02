@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +18,8 @@ public class ArticleControllerServlet extends HttpServlet {
 
 
     private Map<Integer, String> products = new HashMap<>();
-    Map<String, Integer> basket;
+
+
 
     public ArticleControllerServlet() {
         products.put(1, "Piwo");
@@ -28,6 +30,8 @@ public class ArticleControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        Collection <Article> articles = new ArticleService().getAvialableArticles();
 
         response.getWriter().println("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -61,14 +65,13 @@ public class ArticleControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
 
-        if (session == null) {
-            session = request.getSession();
+        Object object = session.getAttribute("basket");
+        Map<String, Integer> basket = (Map<String, Integer>) object;
+
+        if (basket == null) {
             basket = new HashMap<>();
-        } else {
-            Object object = session.getAttribute("basket");
-            basket = (Map<String, Integer>) object;
         }
 
         Integer article = Integer.valueOf(request.getParameter("article"));

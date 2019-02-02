@@ -12,7 +12,7 @@ import java.util.Map;
 @WebServlet (name = "BasketServlett", value = "/basket")
 public class BasketServlet extends HttpServlet {
 
-    private Map<String, Integer> basket = new HashMap<>();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,11 +20,36 @@ public class BasketServlet extends HttpServlet {
 
         Object object = session.getAttribute("basket");
 
-        basket = (Map<String, Integer>)object;
+        Map<String, Integer> basket = (Map<String, Integer>)object;
+        
+        response.getWriter().println("<html lang=\"en\">\n" +
+                "<body>\n" +
+                "\n" +
+                "    <p>Basket content</p>\n" +
+                "    <table>\n" +
+                "        <tr>\n" +
+                "            <th>Article name</th>\n" +
+                "            <th>Quantity</th>\n" +
+                "        </tr>\n" +
+                "        <br>\n" +
+                "        <a href=\"/shop\">Add another article</a>\n" +
+                "        <br>\n" +
+                "        <a href=\"/login\">Login</a>\n" +
+                "    </table>\n" +
+                "\n" +
+                "</body>\n" +
+                "</html>");
+    }
 
 
-
-        response.getWriter().println("<h1>DUPA</h1>");
-        response.getWriter().println(basket);
+    private String printBasket (Map<String, Integer> basket) {
+        String string = null;
+        for (Map.Entry<String, Integer> entry : basket.entrySet()) {
+           string = "<h2>" + entry.getKey() + "" + entry.getValue() +"</h2>";
+            System.out.println();
+        }
+        return string;
     }
 }
+
+
