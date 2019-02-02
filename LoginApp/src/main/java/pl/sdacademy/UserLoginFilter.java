@@ -14,7 +14,7 @@ public class UserLoginFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         if (request.getSession(false) == null) {
-            response.sendRedirect("index.html");
+            response.sendRedirect("login.html");
             return;
         }
         chain.doFilter(request,response);

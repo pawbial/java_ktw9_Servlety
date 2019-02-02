@@ -27,6 +27,7 @@ public class BasketServlet extends HttpServlet {
                 "\n" +
                 "    <p>Basket content</p>\n" +
                 "    <table>\n" +
+                basket +
                 "        <tr>\n" +
                 "            <th>Article name</th>\n" +
                 "            <th>Quantity</th>\n" +

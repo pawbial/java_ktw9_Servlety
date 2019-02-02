@@ -20,7 +20,7 @@ public class MainServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session == null) {
-            response.sendRedirect("index.html");
+            response.sendRedirect("login.html");
             return;
         }
         String welcomeUser = (String) session.getAttribute("welcomeUser");
