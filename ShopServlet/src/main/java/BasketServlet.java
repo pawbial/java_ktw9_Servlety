@@ -35,7 +35,7 @@ public class BasketServlet extends HttpServlet {
                 "        <br>\n" +
                 "        <a href=\"/shop\">Add another article</a>\n" +
                 "        <br>\n" +
-                "        <a href=\"/login\">Login</a>\n" +
+                "        <a href=\"/login/login.html\">Login</a>\n" +
                 "    </table>\n" +
                 "\n" +
                 "</body>\n" +
