@@ -21,7 +21,7 @@ public class BasketServlet extends HttpServlet {
         Object object = session.getAttribute("basket");
 
         Map<String, Integer> basket = (Map<String, Integer>)object;
-        
+
         response.getWriter().println("<html lang=\"en\">\n" +
                 "<body>\n" +
                 "\n" +

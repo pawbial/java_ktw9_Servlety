@@ -68,7 +68,7 @@ public class ArticleControllerServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         Object object = session.getAttribute("basket");
-        Map<String, Integer> basket = (Map<String, Integer>) object;
+        Map<String, Integer> basket = (Map<String, Integer>) object; //nie tworzymy basketu na zewnątrz, pobieramy go z sesji i sprawdzamy
 
         if (basket == null) {
             basket = new HashMap<>();
