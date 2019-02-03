@@ -12,9 +12,10 @@
 </head>
 <body>
 
-    <p>
-        Welcome! Registration was successful!<br>
+<p>
+    Welcome! Registration was successful!<br>
     <%= "Użytkownik " + request.getParameter("firstName") + " " + request.getParameter("lastName")%>
-    </p>
+    <a href="/list">Users list</a>
+</p>
 </body>
 </html>

@@ -42,11 +42,11 @@ public class RegisterController extends HttpServlet {
         UserDTO userDTO = new UserDTO();
         userDTO.setFirstName(firstName);
         userDTO.setLastName(lastName);
-        userDTO.setAddress(addressDTO);
+        userDTO.setAddressDTO(addressDTO);
 
         userService.saveUser(userDTO);
 
-//       request.getRequestDispatcher("/welcome").forward(request,response); przekieruje na wiadomość powitalną
+       request.getRequestDispatcher("/welcome").forward(request,response);
 
 
 

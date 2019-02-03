@@ -6,26 +6,18 @@ public class UserDTO {
 
     private String firstName;
     private String lastName;
-    private AddressDTO address;
+    private AddressDTO addressDTO;
     private Long id;
 
     public UserDTO () {
 
     }
 
-    public UserDTO(String firstName, String lastName, AddressDTO address, Long id) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public UserDTO(User user) {
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.addressDTO = new AddressDTO(user.getAddress());
+        this.id = user.getId();
     }
 
     public String getFirstName() {
@@ -44,12 +36,32 @@ public class UserDTO {
         this.lastName = lastName;
     }
 
-    public AddressDTO getAddress() {
-        return address;
+    public AddressDTO getAddressDTO() {
+        return addressDTO;
     }
 
-    public void setAddress(AddressDTO address) {
-        this.address = address;
+    public void setAddressDTO(AddressDTO addressDTO) {
+        this.addressDTO = addressDTO;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addressDTO=" + addressDTO +
+                ", id=" + id +
+                '}';
     }
 }
+
+
 

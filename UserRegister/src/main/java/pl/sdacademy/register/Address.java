@@ -17,6 +17,12 @@ public class Address {
 
     }
 
+    public Address(String street, String city, String houseNumber, Long id) {
+        this.street = street;
+        this.city = city;
+        this.houseNumber = houseNumber;
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue
@@ -52,5 +58,15 @@ public class Address {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

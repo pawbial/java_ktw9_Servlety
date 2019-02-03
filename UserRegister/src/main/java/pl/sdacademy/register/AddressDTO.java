@@ -12,15 +12,16 @@ public class AddressDTO {
     private String houseNumber;
     private Long id;
 
-    public AddressDTO() {
+
+    public AddressDTO () {
 
     }
 
-    public AddressDTO(String street, String city, String houseNumber, Long id) {
-        this.street = street;
-        this.city = city;
-        this.houseNumber = houseNumber;
-        this.id = id;
+    public AddressDTO(Address address) {
+        this.street = address.getStreet();
+        this.city = address.getCity();
+        this.houseNumber = address.getHouseNumber();
+        this.id = address.getId();
     }
 
     public Long getId() {
@@ -54,5 +55,16 @@ public class AddressDTO {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+
+    @Override
+    public String toString() {
+        return "AddressDTO{" +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
