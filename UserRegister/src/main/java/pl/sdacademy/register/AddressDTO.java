@@ -5,21 +5,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
-public class Address {
-    
+public class AddressDTO {
+
     private String street;
     private String city;
     private String houseNumber;
     private Long id;
 
-    public Address () {
+    public AddressDTO() {
 
     }
 
+    public AddressDTO(String street, String city, String houseNumber, Long id) {
+        this.street = street;
+        this.city = city;
+        this.houseNumber = houseNumber;
+        this.id = id;
+    }
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
@@ -27,7 +30,7 @@ public class Address {
     public void setId(Long id) {
         this.id = id;
     }
-    @Column
+
     public String getStreet() {
         return street;
     }
@@ -36,7 +39,7 @@ public class Address {
         this.street = street;
     }
 
-    @Column
+
     public String getCity() {
         return city;
     }
@@ -45,7 +48,6 @@ public class Address {
         this.city = city;
     }
 
-    @Column
     public String getHouseNumber() {
         return houseNumber;
     }

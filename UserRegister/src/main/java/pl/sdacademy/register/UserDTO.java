@@ -1,23 +1,25 @@
 package pl.sdacademy.register;
 
-import pl.sdacademy.register.Address;
-
 import javax.persistence.*;
 
-@Entity
-public class User {
-    
+public class UserDTO {
+
     private String firstName;
     private String lastName;
     private Address address;
     private Long id;
 
-    public User () {
+    public UserDTO () {
 
     }
 
-    @Id
-    @GeneratedValue
+    public UserDTO(String firstName, String lastName, Address address, Long id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
@@ -25,7 +27,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    @Column ()
+
     public String getFirstName() {
         return firstName;
     }
@@ -33,7 +35,7 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    @Column
+
     public String getLastName() {
         return lastName;
     }
@@ -41,7 +43,7 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    @OneToOne (cascade = CascadeType.ALL)
+
     public Address getAddress() {
         return address;
     }
@@ -50,3 +52,4 @@ public class User {
         this.address = address;
     }
 }
+

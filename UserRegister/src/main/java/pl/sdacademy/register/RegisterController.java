@@ -26,17 +26,6 @@ public class RegisterController extends HttpServlet {
         String street = request.getParameter("street");
         String houseNumber = request.getParameter("houseNumber");
 
-        Address address = new Address(street,city,houseNumber);
-        User user = new User(firstName,lastName,address);
-
-        Collection<String> validation = new UserRegisterValidator().validateUser(user);
-
-        if (validation.size() == 0) {
-            request.getSession();
-            response.sendRedirect("/welcome");
-
-        }
-
 
     }
 }
