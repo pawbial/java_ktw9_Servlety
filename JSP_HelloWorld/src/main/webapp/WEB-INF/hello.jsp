@@ -17,5 +17,6 @@
     <p>Dzisiaj jest: <%= LocalDateTime.now().toString()%></p>
 <%--poniżej wyrażenie--%>
     <% out.print("Licznik odwiedzin: " + Counter.INSTANCE.getCounter());%>
+<P>Hello <%request.getParameter("name");%></p>
 </body>
 </html>

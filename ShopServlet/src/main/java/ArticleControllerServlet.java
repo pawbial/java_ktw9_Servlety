@@ -33,6 +33,8 @@ public class ArticleControllerServlet extends HttpServlet {
 
         Collection <Article> articles = new ArticleService().getAvialableArticles();
 
+        String option = articles.stream().map(article -> "<option value=\"" + article.getId() + "\">" + article.getName() + "</option>").collect(Collectors.joining());
+
         response.getWriter().println("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
@@ -45,7 +47,7 @@ public class ArticleControllerServlet extends HttpServlet {
                 "<form action=\"products\" method=\"post\" value=\"add product\">\n" +
                 "    <select name=\"article\">\n" +
                 "        <option value=\"\" disabled selection>Select ...</option>\n" +
-                products.entrySet().stream().map(entry -> "<option value=\"" + entry.getKey() + "\">" + entry.getValue() + "</option>").collect(Collectors.joining()) +
+                option +
                 "    </select>\n" +
                 "    <h2>Set quantity</h2>\n" +
                 "    <select action=\"quantity\" method=\"post\">\n" +
