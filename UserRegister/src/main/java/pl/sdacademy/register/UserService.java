@@ -34,4 +34,12 @@ public class UserService {
         List<UserDTO> users = userDAO.getUsers().stream().map(UserDTO::new).collect(Collectors.toList());
         return users;
     }
+
+    UserDTO findByID (Long id) {
+        User user = userDAO.getUser(id);
+        if (user != null) {
+            return new UserDTO(user);
+        }
+        return null;
+    }
 }
