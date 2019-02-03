@@ -17,6 +17,9 @@ public class RegisterController extends HttpServlet {
     @Inject
     private UserService userService;
 
+    @Inject
+    private UserDAO userDAO;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request,response);
@@ -30,6 +33,20 @@ public class RegisterController extends HttpServlet {
         String city = request.getParameter("city");
         String street = request.getParameter("street");
         String houseNumber = request.getParameter("houseNumber");
+
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.setCity(city);
+        addressDTO.setStreet(street);
+        addressDTO.setHouseNumber(houseNumber);
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setFirstName(firstName);
+        userDTO.setLastName(lastName);
+        userDTO.setAddress(addressDTO);
+
+        userService.saveUser(userDTO);
+
+//       request.getRequestDispatcher("/welcome").forward(request,response); przekieruje na wiadomość powitalną
 
 
 

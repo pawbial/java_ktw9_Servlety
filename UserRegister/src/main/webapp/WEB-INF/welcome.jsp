@@ -1,4 +1,4 @@
-<%--
+<%@ page import="pl.sdacademy.register.UserDAO" %><%--
   Created by IntelliJ IDEA.
   User: Użytkownik
   Date: 2019-02-02
@@ -13,7 +13,8 @@
 <body>
 
     <p>
-        Welcome! Registration was successful!
+        Welcome! Registration was successful!<br>
+    <%= "Użytkownik " + request.getParameter("firstName") + " " + request.getParameter("lastName")%>
     </p>
 </body>
 </html>

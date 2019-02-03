@@ -1,5 +1,6 @@
 package pl.sdacademy.register;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,10 +12,13 @@ import java.io.IOException;
 @WebServlet (name = "WelcomeController", value = "/welcome")
 public class WelcomeController extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Inject
+    private UserDAO userDAO;
 
-        HttpSession session = request.getSession(false);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        HttpSession session = request.getSession(false);
 
         request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request,response);
     }

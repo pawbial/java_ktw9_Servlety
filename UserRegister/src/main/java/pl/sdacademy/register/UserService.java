@@ -22,6 +22,7 @@ public class UserService {
             address.setCity(addressDTO.getCity());
             address.setStreet(addressDTO.getStreet());
             address.setHouseNumber(addressDTO.getHouseNumber());
+            user.setAddress(address);
         }
         userDAO.saveUser(user);
     }
