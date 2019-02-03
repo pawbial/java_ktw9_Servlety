@@ -1,5 +1,6 @@
 package pl.sdacademy.register;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,10 @@ import java.util.Collection;
 
 @WebServlet (name = "RegisterController", value ="/user")
 public class RegisterController extends HttpServlet {
+
+
+    @Inject
+    private UserService userService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +30,8 @@ public class RegisterController extends HttpServlet {
         String city = request.getParameter("city");
         String street = request.getParameter("street");
         String houseNumber = request.getParameter("houseNumber");
+
+
 
 
     }

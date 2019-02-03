@@ -1,7 +1,7 @@
 package pl.sdacademy.register;
 
 
-import javax.ejb.Singleton;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;

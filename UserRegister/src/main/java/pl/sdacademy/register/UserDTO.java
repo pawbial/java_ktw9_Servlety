@@ -6,14 +6,14 @@ public class UserDTO {
 
     private String firstName;
     private String lastName;
-    private Address address;
+    private AddressDTO address;
     private Long id;
 
     public UserDTO () {
 
     }
 
-    public UserDTO(String firstName, String lastName, Address address, Long id) {
+    public UserDTO(String firstName, String lastName, AddressDTO address, Long id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -44,11 +44,11 @@ public class UserDTO {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
+    public AddressDTO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDTO address) {
         this.address = address;
     }
 }
