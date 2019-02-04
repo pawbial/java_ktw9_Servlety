@@ -30,6 +30,21 @@ public class UserService {
         userDAO.saveUser(user);
     }
 
+    void updateUser (UserDTO userDTO) {
+        User user = userDAO.getUser(userDTO.getId());
+        Address address = new Address();
+        address.setCity(userDTO.getAddressDTO().getCity());
+        address.setHouseNumber(userDTO.getAddressDTO().getHouseNumber());
+        address.setStreet(userDTO.getAddressDTO().getStreet());
+
+        user.setAddress(address);
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setId(userDTO.getId());
+
+        userDAO.mergeUser(user);
+    }
+
     Collection <UserDTO> showUsers () {
         List<UserDTO> users = userDAO.getUsers().stream().map(UserDTO::new).collect(Collectors.toList());
         return users;
@@ -42,4 +57,6 @@ public class UserService {
         }
         return null;
     }
+
+
 }

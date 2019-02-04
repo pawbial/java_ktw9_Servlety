@@ -11,11 +11,14 @@
     <title>Welcome</title>
 </head>
 <body>
-
+<%@include file="header.html"%>
 <p>
     Welcome! Registration was successful!<br>
-    <%= "Użytkownik " + request.getParameter("firstName") + " " + request.getParameter("lastName")%>
+    <%= "User " + request.getParameter("firstName") + " " + request.getParameter("lastName")%>
+    <br>
     <a href="/list">Users list</a>
+    <br>
+    <a href="/list">Add another user</a>
 </p>
 </body>
 </html>

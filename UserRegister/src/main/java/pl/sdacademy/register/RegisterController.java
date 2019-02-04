@@ -17,8 +17,6 @@ public class RegisterController extends HttpServlet {
     @Inject
     private UserService userService;
 
-    @Inject
-    private UserDAO userDAO;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,12 +42,15 @@ public class RegisterController extends HttpServlet {
         userDTO.setLastName(lastName);
         userDTO.setAddressDTO(addressDTO);
 
-        userService.saveUser(userDTO);
+        Collection<String> validation = new UserRegisterValidator().validateUser(userDTO);
+
+        if (validation.size() != 0) {
+            request.getRequestDispatcher("/error").forward(request,response);
+        } else {
+            userService.saveUser(userDTO);
+        }
 
        request.getRequestDispatcher("/welcome").forward(request,response);
-
-
-
 
     }
 }

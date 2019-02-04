@@ -28,4 +28,8 @@ public class UserDAO {
     User getUser (Long userID) {
        return entityManager.find(User.class, userID);
     }
+    @Transactional
+    void mergeUser (User user) {
+        entityManager.merge(user);
+    }
 }

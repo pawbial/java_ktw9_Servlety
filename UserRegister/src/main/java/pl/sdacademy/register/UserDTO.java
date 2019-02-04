@@ -54,12 +54,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "UserDTO{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", addressDTO=" + addressDTO +
-                ", id=" + id +
-                '}';
+        return "First name: "+ firstName + ", last name: " + lastName + ", address:  " + addressDTO;
     }
 }
 

@@ -25,7 +25,14 @@ public class UserListController extends HttpServlet {
 
         request.getRequestDispatcher("WEB-INF/users.jsp").forward(request,response);
 
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Collection<UserDTO> users = userService.showUsers();
+        request.setAttribute("users",users);
+
+        request.getRequestDispatcher("WEB-INF/users.jsp").forward(request,response);
     }
 }

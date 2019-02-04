@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class UserRegisterValidator {
 
-    public Collection <String> validateUser (User user) {
+    public Collection <String> validateUser (UserDTO user) {
 
         Collection <String> validationMessages = new ArrayList<>();
 
@@ -18,13 +18,13 @@ public class UserRegisterValidator {
         if (StringUtils.isBlank(user.getLastName())) {
             validationMessages.add("Last name cannot be empty");
         }
-        if (StringUtils.isBlank(user.getAddress().getCity())) {
+        if (StringUtils.isBlank(user.getAddressDTO().getCity())) {
             validationMessages.add("City cannot be empty");
         }
-        if (StringUtils.isBlank(user.getAddress().getStreet())) {
+        if (StringUtils.isBlank(user.getAddressDTO().getStreet())) {
             validationMessages.add("Street cannot be empty");
         }
-        if (StringUtils.isBlank(user.getAddress().getHouseNumber())) {
+        if (StringUtils.isBlank(user.getAddressDTO().getHouseNumber())) {
             validationMessages.add("House number cannot be empty");
         }
         return validationMessages;

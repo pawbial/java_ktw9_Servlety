@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+<%@include file="header.html"%>
     <p>DANE</p>
     <% UserDTO user = (UserDTO) request.getAttribute("user");%>
     <%= user.toString()%>
