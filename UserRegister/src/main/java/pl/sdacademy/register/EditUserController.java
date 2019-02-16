@@ -51,6 +51,7 @@ public class EditUserController extends HttpServlet {
 
             user.setFirstName(firstName);
             user.setLastName(lastName);
+            user.setAddressDTO(addressDTO);
             user.setId(id);
 
             Collection<String> validation = new UserRegisterValidator().validateUser(user);

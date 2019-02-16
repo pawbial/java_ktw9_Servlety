@@ -21,9 +21,12 @@ First name: ${user.firstName}
 <br>
 Last name: ${user.lastName}
 <br>
-Address: ${user.addressDTO}
+City: ${user.addressDTO.city}
 <br>
-
+Street: ${user.addressDTO.street}
+<br>
+House Number: ${user.addressDTO.houseNumber}
+<br>
 
 </body>
 </html>

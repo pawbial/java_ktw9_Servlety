@@ -13,46 +13,39 @@
 </head>
 <body>
     <%@include file="header.html"%>
-    <%UserDTO user = new UserDTO();
-    AddressDTO addressDTO = new AddressDTO();
-    addressDTO.setStreet("");
-    addressDTO.setHouseNumber("");
-    addressDTO.setCity("");
-    user.setFirstName("");
-    user.setLastName("");
-    user.setAddressDTO(addressDTO);
-    %>
-    <%UserDTO userDTO = (UserDTO)request.getAttribute("user");%>
-    <%if (userDTO != null) {
-         user = userDTO;
-         request.setAttribute("id",user.getId());
-    }
-        ;%>
+
+    <%--<%UserDTO userDTO = (UserDTO)request.getAttribute("user");%>--%>
+    <%--<%if (userDTO != null) {--%>
+        <%--request.setAttribute("id",userDTO.getId());--%>
+    <%--}--%>
+        <%--;%>--%>
 
     <form method="post">
         <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" value="<%= user.getFirstName()%>">
+        <input type="text" id="firstName" name="firstName" value="${user.firstName}">
         <br>
 
         <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" value="<%= user.getLastName()%>">
+        <input type="text" id="lastName" name="lastName" value="${user.lastName}">
         <br>
 
         <label for="city">Cit</label>
-        <input type="text" id="city" name="city"value="<%= user.getAddressDTO().getCity()%>">
+        <input type="text" id="city" name="city"value="${user.addressDTO.city}">
         <br>
 
         <label for="street">Street</label>
-        <input type="text" id="street" name="street"value="<%= user.getAddressDTO().getStreet()%>">
+        <input type="text" id="street" name="street"value="${user.addressDTO.street}">
         <br>
 
         <label for="houseNumber">House Number</label>
-        <input type="text" id="houseNumber" name="houseNumber"value="<%= user.getAddressDTO().getHouseNumber()%>">
+        <input type="text" id="houseNumber" name="houseNumber"value="${user.addressDTO.houseNumber}">
         <br>
 
         <input type="submit" value="submit">
 
+        ${request.setAttribute("id",user.id)}
+
     </form>
-    <%%>
+
 </body>
 </html>
