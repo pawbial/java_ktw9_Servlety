@@ -18,7 +18,7 @@
     <br>
     <a href="/list">Users list</a>
     <br>
-    <a href="/list">Add another user</a>
+    <a href="/user">Add another user</a>
 </p>
 </body>
 </html>

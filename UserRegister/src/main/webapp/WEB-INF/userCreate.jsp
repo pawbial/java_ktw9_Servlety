@@ -17,7 +17,7 @@
     <%--<%UserDTO userDTO = (UserDTO)request.getAttribute("user");%>--%>
     <%--<%if (userDTO != null) {--%>
         <%--request.setAttribute("id",userDTO.getId());--%>
-    <%--}--%>
+    <%--}-- pozostałość wersji poprzedniej, bez znajomości EL's :)%>
         <%--;%>--%>
 
     <form method="post">
