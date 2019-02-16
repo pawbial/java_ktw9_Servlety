@@ -11,10 +11,17 @@
     <title>Title</title>
 </head>
 <body>
-<%@include file="header.html"%>
-    <p>DANE</p>
-    <% UserDTO user = (UserDTO) request.getAttribute("user");%>
-    <%= user.toString()%>
+<%@include file="header.html" %>
+<p> USER PROFILE </p>
+
+
+First name: <${user.firstname}/>
+<br>
+Last name: <${user.lastname}/>
+<br>
+Address: <jsp:getProperty name="user" property="addressDTO"/>
+<br>
+
 
 </body>
 </html>

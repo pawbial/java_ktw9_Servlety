@@ -54,7 +54,7 @@ public class ArticleControllerServlet extends HttpServlet {
                 "        <input type=\"number\" min=\"1\" name=\"quantity\">\n" +
                 "\n" +
                 "    </select>\n" +
-                "    <input type=\"submit\" name=\"add\" <br>>\n" +
+                "    <input type=\"submit\" name=\"add\"value=\"add\" <br>>\n" +
                 "</form>\n" +
                 "<form action=\"basket\" method=\"get\" value=\"Go to cart\">" +
                 " \"<input type=\"submit\"action=\"/basket\" method=\"get\"value=\"Go to cart\" >\" " +

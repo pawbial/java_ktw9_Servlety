@@ -60,6 +60,6 @@ public class AddressDTO {
 
     @Override
     public String toString() {
-        return street + city + houseNumber;
+        return street + ", " + city + ", " + houseNumber;
     }
 }
