@@ -14,7 +14,7 @@
 <%@include file="header.html"%>
 <p>
     Welcome! Registration was successful!<br>
-    <%= "User " + request.getParameter("firstName") + " " + request.getParameter("lastName")%>
+
     <br>
     <a href="/list">Users list</a>
     <br>

@@ -18,6 +18,7 @@ public class UserService {
         User user = new User();
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
+        user.setPassword(userDTO.getPassword());
 
         AddressDTO addressDTO = userDTO.getAddressDTO();
         if (addressDTO != null) {
@@ -41,6 +42,7 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         user.setId(userDTO.getId());
+        user.setPassword(userDTO.getPassword());
 
         userDAO.mergeUser(user);
     }
@@ -52,6 +54,14 @@ public class UserService {
 
     UserDTO findByID (Long id) {
         User user = userDAO.getUser(id);
+        if (user != null) {
+            return new UserDTO(user);
+        }
+        return null;
+    }
+
+    UserDTO findByLastName (String lastName) {
+        User user = userDAO.getUserByLastName(lastName);
         if (user != null) {
             return new UserDTO(user);
         }

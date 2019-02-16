@@ -8,6 +8,7 @@ public class UserDTO {
     private String lastName;
     private AddressDTO addressDTO;
     private Long id;
+    private String password;
 
     public UserDTO () {
 
@@ -18,6 +19,7 @@ public class UserDTO {
         this.lastName = user.getLastName();
         this.addressDTO = new AddressDTO(user.getAddress());
         this.id = user.getId();
+        this.password = user.getPassword();
     }
 
     public String getFirstName() {
@@ -50,6 +52,14 @@ public class UserDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

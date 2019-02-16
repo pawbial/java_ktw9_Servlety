@@ -75,6 +75,7 @@
         </c:otherwise>
 
     </c:choose>
+
     <br>
     <%--<% } %>wersja poprzednia bez tagLib i bez EL's--%>
 </table>

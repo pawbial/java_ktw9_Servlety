@@ -28,6 +28,14 @@ public class UserDAO {
     User getUser (Long userID) {
        return entityManager.find(User.class, userID);
     }
+
+    User getUserByLastName (String lastName) {
+        Query query = entityManager.createQuery("SELECT u FROM  User u WHERE u.lastName = :lastName");
+        query.setParameter("lastName",lastName);
+
+        return (User) query.getSingleResult();
+
+    }
     @Transactional
     void mergeUser (User user) {
         entityManager.merge(user);

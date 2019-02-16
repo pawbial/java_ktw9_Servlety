@@ -20,6 +20,8 @@
     <%--}-- pozostałość wersji poprzedniej, bez znajomości EL's :)%>
         <%--;%>--%>
 
+
+    <c:if></c:if>
     <form method="post">
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" name="firstName" value="${user.firstName}">
@@ -27,6 +29,14 @@
 
         <label for="lastName">Last Name</label>
         <input type="text" id="lastName" name="lastName" value="${user.lastName}">
+        <br>
+
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" value="${user.password}">
+        <br>
+
+        <label for="passwordRetype">Repeat password</label>
+        <input type="text" id="passwordRetype" name="passwordRetype" value="${user.password}">
         <br>
 
         <label for="city">Cit</label>

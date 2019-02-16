@@ -1,5 +1,8 @@
 package pl.sdacademy.register;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Digits;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -31,6 +35,15 @@ public class RegisterController extends HttpServlet {
         String city = request.getParameter("city");
         String street = request.getParameter("street");
         String houseNumber = request.getParameter("houseNumber");
+        String password = request.getParameter("password");
+        String passwordRetype = request.getParameter("passwordRetype");
+
+        if (!StringUtils.equals(password,passwordRetype)) {
+            String error = "Password didn't match";
+            request.setAttribute("error",error);
+            request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,response);
+    }
+        String md5Hex = DigestUtils.md5Hex(password);
 
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setCity(city);
@@ -41,6 +54,7 @@ public class RegisterController extends HttpServlet {
         userDTO.setFirstName(firstName);
         userDTO.setLastName(lastName);
         userDTO.setAddressDTO(addressDTO);
+        userDTO.setPassword(md5Hex);
 
         Collection<String> validation = new UserRegisterValidator().validateUser(userDTO);
 

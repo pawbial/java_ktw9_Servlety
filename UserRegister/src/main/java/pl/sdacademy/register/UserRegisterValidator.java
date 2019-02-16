@@ -27,6 +27,9 @@ public class UserRegisterValidator {
         if (StringUtils.isBlank(user.getAddressDTO().getHouseNumber())) {
             validationMessages.add("House number cannot be empty");
         }
+        if (StringUtils.isBlank(user.getPassword())){
+            validationMessages.add("Password cannot be empty");
+        }
         return validationMessages;
     }
 }

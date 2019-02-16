@@ -11,6 +11,7 @@ public class User {
     private String lastName;
     private Address address;
     private Long id;
+    private String password;
 
     public User () {
 
@@ -48,6 +49,15 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Column
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
