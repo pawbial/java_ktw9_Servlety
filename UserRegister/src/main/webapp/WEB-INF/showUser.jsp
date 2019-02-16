@@ -1,3 +1,4 @@
+
 <%@ page import="pl.sdacademy.register.UserDTO" %><%--
   Created by IntelliJ IDEA.
   User: Użytkownik
@@ -5,7 +6,8 @@
   Time: 14:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -15,11 +17,11 @@
 <p> USER PROFILE </p>
 
 
-First name: <${user.firstname}/>
+First name: ${user.firstName}
 <br>
-Last name: <${user.lastname}/>
+Last name: ${user.lastName}
 <br>
-Address: <jsp:getProperty name="user" property="addressDTO"/>
+Address: ${user.addressDTO}
 <br>
 
 
