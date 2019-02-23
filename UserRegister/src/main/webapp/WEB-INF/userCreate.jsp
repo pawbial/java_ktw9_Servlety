@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="pl.sdacademy.register.UserDTO" %>
 <%@ page import="pl.sdacademy.register.AddressDTO" %><%--
   Created by IntelliJ IDEA.
@@ -21,22 +22,32 @@
         <%--;%>--%>
 
 
-    <c:if></c:if>
+
     <form method="post">
+
+        <p><b>UserData</b></p>
+        <br>
+
+        <label for="userName">User Name</label>
+        <input type="text" id="userName" name="userName" value="${user.userName}">
+        <br>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" value="${user.password}">
+        <br>
+
+        <label for="passwordRetype">Repeat password</label>
+        <input type="password" id="passwordRetype" name="passwordRetype" value="${user.password}">
+        <br>
+
+        <p><b>Personal data</b></p>
+        <br>
         <label for="firstName">First Name</label>
         <input type="text" id="firstName" name="firstName" value="${user.firstName}">
         <br>
 
         <label for="lastName">Last Name</label>
         <input type="text" id="lastName" name="lastName" value="${user.lastName}">
-        <br>
-
-        <label for="password">Password</label>
-        <input type="text" id="password" name="password" value="${user.password}">
-        <br>
-
-        <label for="passwordRetype">Repeat password</label>
-        <input type="text" id="passwordRetype" name="passwordRetype" value="${user.password}">
         <br>
 
         <label for="city">Cit</label>
@@ -54,6 +65,10 @@
         <input type="submit" value="submit">
 
         ${request.setAttribute("id",user.id)}
+
+        <c:if test="${not empty sessionScope.login}">
+
+        </c:if>
 
     </form>
 

@@ -30,6 +30,9 @@ public class UserRegisterValidator {
         if (StringUtils.isBlank(user.getPassword())){
             validationMessages.add("Password cannot be empty");
         }
+        if (StringUtils.isBlank(user.getUserName())){
+            validationMessages.add("user name cannot be empty");
+        }
         return validationMessages;
     }
 }

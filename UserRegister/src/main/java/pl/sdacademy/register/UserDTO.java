@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 public class UserDTO {
 
+
+    private String userName;
     private String firstName;
     private String lastName;
     private AddressDTO addressDTO;
@@ -15,6 +17,7 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
+        this.userName = user.getUserName();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.addressDTO = new AddressDTO(user.getAddress());
@@ -60,6 +63,14 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override

@@ -37,11 +37,22 @@ public class RegisterController extends HttpServlet {
         String houseNumber = request.getParameter("houseNumber");
         String password = request.getParameter("password");
         String passwordRetype = request.getParameter("passwordRetype");
+        String userName = request.getParameter("userName");
+
+        UserDTO userNameValidation = userService.findByUserName(userName);
+
+        if (userNameValidation != null) {
+            String userNameError = "User name already taken, please pick another user name";
+            request.setAttribute("userNameError", userNameError);
+            request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,response);
+            return;
+        }
 
         if (!StringUtils.equals(password,passwordRetype)) {
-            String error = "Password didn't match";
-            request.setAttribute("error",error);
+            String passwordError = "Password didn't match";
+            request.setAttribute("passwordError",passwordError);
             request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,response);
+            return;
     }
         String md5Hex = DigestUtils.md5Hex(password);
 
@@ -55,6 +66,7 @@ public class RegisterController extends HttpServlet {
         userDTO.setLastName(lastName);
         userDTO.setAddressDTO(addressDTO);
         userDTO.setPassword(md5Hex);
+        userDTO.setUserName(userName);
 
         Collection<String> validation = new UserRegisterValidator().validateUser(userDTO);
 
@@ -64,7 +76,7 @@ public class RegisterController extends HttpServlet {
             userService.saveUser(userDTO);
         }
 
-       request.getRequestDispatcher("/welcome").forward(request,response);
+       request.getRequestDispatcher("/main/welcome").forward(request,response);
 
     }
 }

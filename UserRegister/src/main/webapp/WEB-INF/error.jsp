@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Użytkownik
@@ -18,6 +19,10 @@
     Thank You!
     <br>
     <a href="user">Back</a>
+
+    <c:if test="${not empty sessionScope.login}">
+
+    </c:if>
 </p>
 
 </body>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Użytkownik
@@ -15,13 +16,24 @@
 
 <form method="post">
 
-    <p>Login</p>
+    <h1>Login</h1>
 
-    <label for="lastName">Last name ...</label>
-    <input type="text" id="lastName" name="lastName">
+    <c:if test="${not empty requestScope.userNotFoundError}">
+        <userNotFoundError>${requestScope.userNotFoundError}</userNotFoundError>
+        <br>
+    </c:if>
+
+    <c:if test="${not empty requestScope.passwordMatchError}">
+        <passwordMatchError>${requestScope.passwordMatchError}</passwordMatchError>
+        <br>
+    </c:if>
+
+
+    <label for="userNameLogin">Last name ...</label>
+    <input type="text" id="userNameLogin" name="userNameLogin">
     <br>
-    <label for="password">Password ...</label>
-    <input type="password" id="password" name="password">
+    <label for="passwordLogin">Password ...</label>
+    <input type="password" id="passwordLogin" name="passwordLogin">
 
     <p>Otherwise create new account <a href="/user">HERE!!!</a></p>
 

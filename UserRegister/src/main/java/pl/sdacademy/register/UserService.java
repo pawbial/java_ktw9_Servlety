@@ -19,6 +19,7 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         user.setPassword(userDTO.getPassword());
+        user.setUserName(userDTO.getUserName());
 
         AddressDTO addressDTO = userDTO.getAddressDTO();
         if (addressDTO != null) {
@@ -65,6 +66,16 @@ public class UserService {
         if (user != null) {
             return new UserDTO(user);
         }
+        return null;
+    }
+
+    UserDTO findByUserName (String userName) {
+        User user = userDAO.getUserByUserName(userName);
+
+        if (user != null) {
+            return new UserDTO(user);
+        }
+
         return null;
     }
 

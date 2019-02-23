@@ -4,6 +4,7 @@ package pl.sdacademy.register;
 import javax.inject.Singleton;
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -30,12 +31,29 @@ public class UserDAO {
     }
 
     User getUserByLastName (String lastName) {
-        Query query = entityManager.createQuery("SELECT u FROM  User u WHERE u.lastName = :lastName");
-        query.setParameter("lastName",lastName);
+        try {
+            Query query = entityManager.createQuery("SELECT u FROM  User u WHERE u.lastName = :lastName");
+            query.setParameter("lastName",lastName);
 
-        return (User) query.getSingleResult();
+            return (User) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
 
     }
+
+    User getUserByUserName (String userName) {
+        try {
+            Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.userName = :userName");
+            query.setParameter("userName",userName);
+
+            return (User) query.getSingleResult();
+
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
     @Transactional
     void mergeUser (User user) {
         entityManager.merge(user);

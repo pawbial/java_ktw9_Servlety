@@ -36,6 +36,7 @@
 <%@include file="header.html" %>
 <table>
     <tr>
+        <td>User Name</td>
         <td>First name</td>
         <td>Last name</td>
         <td>Address name</td>
@@ -57,6 +58,7 @@
             <c:forEach var="userDTO" items="${users}">
 
                 <tr>
+                    <td>${userDTO.userName}</td>
                     <td>${userDTO.firstName}</td>
                         <%--<td><%= userDTO.getLastName()%></td>--%>
                     <td>${userDTO.lastName}</td>
@@ -75,6 +77,10 @@
         </c:otherwise>
 
     </c:choose>
+
+    <c:if test="${not empty sessionScope.login}">
+
+    </c:if>
 
     <br>
     <%--<% } %>wersja poprzednia bez tagLib i bez EL's--%>

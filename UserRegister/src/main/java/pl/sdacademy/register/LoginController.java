@@ -3,6 +3,7 @@ package pl.sdacademy.register;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.inject.Inject;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet (name = "LoginController", value = "/login")
+@WebServlet(name = "LoginController", value = "/login")
 public class LoginController extends HttpServlet {
 
     @Inject
@@ -21,30 +22,43 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
 
-        String lastName = request.getParameter("lastName");
-        String password = request.getParameter("password");
+        String userName = request.getParameter("userNameLogin");
+        String password = request.getParameter("passwordLogin");
 
-        String md5Hex = DigestUtils.md5Hex(password);
+        UserDTO validatedUser = userService.findByUserName(userName);
 
-        UserDTO validatedUser = userService.findByLastName(lastName);
+        if (validatedUser == null) {
+            String userNotFoundError = "User not found, please type again correct user name or create account";
+            request.setAttribute("userseNotFoundError", userNotFoundError);
+            response.sendRedirect("/login");
+        }
 
-        String match = validatedUser.getPassword();
-
-        if (md5Hex.equals(match)) {
-
-            response.sendRedirect("/list");
-        } else {
-            request.getRequestDispatcher("/error").forward(request,response);
+        if (validatedUser != null) {
+            String match = validatedUser.getPassword();
+            String login = "login";
+            String md5Hex = DigestUtils.md5Hex(password);
+            if (!md5Hex.equals(match)) {
+                String passwordMatchError = "Wrong password, type again!";
+                request.setAttribute("passwordMatchError", passwordMatchError);
+                request.getRequestDispatcher("/login").forward(request, response);
+            } else if (md5Hex.equals(match)) {
+                request.setAttribute("userName", userName);
+                session.setAttribute("login", login);
+                request.getRequestDispatcher("/main/welcome").forward(request, response);
+            }
         }
 
     }
 }
+
+
+
